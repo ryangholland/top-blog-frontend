@@ -1,12 +1,10 @@
+import Header from "../components/Header";
+
 export default function Layout({ children }) {
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Header/Navbar */}
-      <header className="bg-blue-600 text-white p-4">
-        <h1 className="text-2xl font-bold">My Blog</h1>
-      </header>
+      <Header />
 
-      {/* Main Content Area */}
       <main className="flex-grow p-6 bg-gray-100">{children}</main>
 
       {/* Footer */}
