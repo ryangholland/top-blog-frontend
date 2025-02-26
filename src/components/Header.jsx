@@ -16,7 +16,7 @@ export default function Header() {
         {/* Centered Navbar Links (Desktop) */}
         <nav className="hidden md:flex flex-1 justify-center gap-6">
           <Link to="/archives" className="hover:underline">
-            Archives
+            Archive
           </Link>
           <Link to="/about" className="hover:underline">
             About
