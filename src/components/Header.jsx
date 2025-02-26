@@ -15,7 +15,7 @@ export default function Header() {
 
         {/* Centered Navbar Links (Desktop) */}
         <nav className="hidden md:flex flex-1 justify-center gap-6">
-          <Link to="/archives" className="hover:underline">
+          <Link to="/archive" className="hover:underline">
             Archive
           </Link>
           <Link to="/about" className="hover:underline">
@@ -44,11 +44,11 @@ export default function Header() {
       {isOpen && (
         <div className="md:hidden bg-blue-700 text-center py-4">
           <Link
-            to="/archives"
+            to="/archive"
             className="block py-2 hover:bg-blue-500"
             onClick={() => setIsOpen(false)}
           >
-            Archives
+            Archive
           </Link>
           <Link
             to="/about"
