@@ -1,27 +1,12 @@
-import { useEffect, useState } from "react";
+import useFetch from "../hooks/useFetch";
 import { Link } from "react-router-dom";
 
 export default function Home() {
-  const [posts, setPosts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    const fetchRecentPosts = async () => {
-      try {
-        const response = await fetch("http://localhost:3000/posts/recent");
-        if (!response.ok) throw new Error("Failed to fetch posts");
-        const data = await response.json();
-        setPosts(data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchRecentPosts();
-  }, []);
+  const {
+    data: posts,
+    loading,
+    error,
+  } = useFetch("/posts/recent");
 
   if (loading) return <p>Loading recent posts...</p>;
   if (error) return <p>Error: {error}</p>;
