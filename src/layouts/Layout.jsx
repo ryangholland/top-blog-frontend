@@ -1,4 +1,5 @@
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 export default function Layout({ children }) {
   return (
@@ -7,10 +8,7 @@ export default function Layout({ children }) {
 
       <main className="flex-grow p-6 bg-gray-100">{children}</main>
 
-      {/* Footer */}
-      <footer className="bg-gray-800 text-white p-4 text-center">
-        <p>© {new Date().getFullYear()} My Blog</p>
-      </footer>
+      <Footer />
     </div>
   );
 }
