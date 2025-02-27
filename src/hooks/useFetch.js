@@ -9,6 +9,8 @@ export default function useFetch(endpoint) {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    if (!endpoint) return; // Do nothing if endpoint is null
+    
     const fetchData = async () => {
       try {
         const response = await fetch(`${API_BASE_URL}${endpoint}`);

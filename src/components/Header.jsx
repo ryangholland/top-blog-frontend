@@ -18,6 +18,9 @@ export default function Header() {
           <Link to="/archive" className="hover:underline">
             Archive
           </Link>
+          <Link to="/tags" className="hover:underline">
+            Tags
+          </Link>
           <Link to="/about" className="hover:underline">
             About
           </Link>

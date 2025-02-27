@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Post from "./pages/Post";
 import About from "./pages/About";
 import Archive from "./pages/Archive";
+import Tags from "./pages/Tags";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/post/:id" element={<Post />}></Route>
           <Route path="/archive" element={<Archive />} />
+          <Route path="/tags" element={<Tags />} />
           <Route path="/about" element={<About />} />
         </Routes>
       </Layout>
