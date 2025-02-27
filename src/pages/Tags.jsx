@@ -1,12 +1,19 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 
 export default function Tags() {
-  const { data: tags, loading: tagsLoading, error: tagsError } = useFetch("/tags");
+  const {
+    data: tags,
+    loading: tagsLoading,
+    error: tagsError,
+  } = useFetch("/tags");
   const [selectedTag, setSelectedTag] = useState(null);
-  const { data: posts, loading: postsLoading, error: postsError } = useFetch(
-    selectedTag ? `/tags/${selectedTag.id}` : null
-  );
+  const {
+    data: posts,
+    loading: postsLoading,
+    error: postsError,
+  } = useFetch(selectedTag ? `/tags/${selectedTag.id}` : null);
 
   return (
     <div className="max-w-4xl mx-auto p-6">
@@ -20,7 +27,7 @@ export default function Tags() {
           <button
             key={tag.id}
             onClick={() => setSelectedTag(tag)}
-            className={`px-4 py-2 rounded-lg ${
+            className={`cursor-pointer px-4 py-2 rounded-lg ${
               selectedTag?.id === tag.id
                 ? "bg-blue-600 text-white"
                 : "bg-gray-200 hover:bg-gray-300"
@@ -33,7 +40,9 @@ export default function Tags() {
 
       {selectedTag && (
         <div>
-          <h2 className="text-xl font-semibold mb-3">Posts tagged "{selectedTag.name}"</h2>
+          <h2 className="text-xl font-semibold mb-3">
+            Posts tagged "{selectedTag.name}"
+          </h2>
 
           {postsLoading && <p>Loading posts...</p>}
           {postsError && <p className="text-red-500">{postsError}</p>}
@@ -42,9 +51,15 @@ export default function Tags() {
             <ul className="space-y-4">
               {posts.posts.map((post) => (
                 <li key={post.id} className="border p-4 rounded-lg">
-                  <h3 className="text-lg font-semibold">{post.title}</h3>
+                  <Link to={`/post/${post.id}`}>
+                    <h3 className="text-lg font-semibold hover:opacity-70">
+                      {post.title}
+                    </h3>
+                  </Link>
                   <p className="text-gray-600">{post.excerpt}</p>
-                  <p className="text-sm text-gray-500">{new Date(post.createdAt).toLocaleDateString()}</p>
+                  <p className="text-sm text-gray-500">
+                    {new Date(post.createdAt).toLocaleDateString()}
+                  </p>
                 </li>
               ))}
             </ul>
