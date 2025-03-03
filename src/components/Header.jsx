@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaRandom, FaBars, FaTimes } from "react-icons/fa"; // Icons
+import fetchRandomPost from "../utils/fetchRandomPost";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <header className="bg-blue-600 text-white shadow-md sticky top-0 w-full z-50">
@@ -26,13 +28,13 @@ export default function Header() {
           </Link>
         </nav>
 
-        {/* Right-Aligned Random Link (Desktop) */}
-        <Link
-          to="/random"
-          className="hidden md:block text-xl hover:text-gray-300"
+        {/* Random Post Button (Desktop) */}
+        <button
+          onClick={() => fetchRandomPost(navigate)}
+          className="hidden md:block text-xl hover:text-gray-300 cursor-pointer"
         >
           <FaRandom />
-        </Link>
+        </button>
 
         {/* Mobile Menu Button */}
         <button
@@ -60,13 +62,12 @@ export default function Header() {
           >
             About
           </Link>
-          <Link
-            to="/random"
-            className="block py-2 hover:bg-blue-500"
-            onClick={() => setIsOpen(false)}
+          <button
+            onClick={() => fetchRandomPost(navigate)}
+            className="block py-2 hover:bg-blue-500 cursor-pointer"
           >
             <FaRandom className="inline" /> Random
-          </Link>
+          </button>
         </div>
       )}
     </header>
