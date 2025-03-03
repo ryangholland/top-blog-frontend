@@ -38,7 +38,7 @@ export default function Header() {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden text-2xl"
+          className="md:hidden text-2xl cursor-pointer"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <FaTimes /> : <FaBars />}
@@ -63,8 +63,11 @@ export default function Header() {
             About
           </Link>
           <button
-            onClick={() => fetchRandomPost(navigate)}
-            className="block py-2 hover:bg-blue-500 cursor-pointer"
+            onClick={async () => {
+              await fetchRandomPost(navigate);
+              setIsOpen(false);
+            }}
+            className="block w-full py-2 hover:bg-blue-500 text-white text-center appearance-none bg-transparent border-none cursor-pointer"
           >
             <FaRandom className="inline" /> Random
           </button>
